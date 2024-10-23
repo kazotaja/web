@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        /* Menu Bar */
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            z-index: 10;
+        }
+
+        .menu-bar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .menu-bar nav a {
+            margin-left: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .menu-bar nav a:hover {
+            color: #ff7300;
+        }
+
+        /* Header Section */
+        .header {
+            position: relative;
+            width: 100%;
+            height: 600px; /* Adjust height as needed */
+            overflow: hidden;
+            background-color: #333; /* Fallback color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 3em;
+            text-align: center;
+            margin-top: 60px; /* To offset the fixed menu bar */
+        }
+
+        .header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; /* Full width */
+            height: auto; /* Maintains aspect ratio */
+            object-fit: cover; /* Ensures video covers the header without stretching */
+        }
+
+        /* Portfolio Grid */
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 20px;
+            padding: 40px;
+            background-color: #f0f0f0; /* Changed to see the grid */
+        }
+
+        .portfolio img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3; /* Ensures 4:3 ratio */
+            object-fit: cover; /* Ensures image fits nicely */
+            border-radius: 15px; /* Adds rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+        }
+
+        .portfolio img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Bigger shadow on hover */
+        }
+
+        /* Modal Background */
+        .modal {
+            display: none; /* Hide the modal by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Modal Content Box */
+        .modal-content {
+            background-color: white;
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Menu Bar -->
+    <div class="menu-bar">
+        <div class="logo">My Logo</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header">
+        <video autoplay loop muted playsinline>
+            <source src="videos/masthead_1080px.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="portfolio">
+        <img src="images/2.png" alt="Portfolio 1" onclick="openModal('modal1')">
+        <img src="images/2.png" alt="Portfolio 2" onclick="openModal('modal2')">
+        <img src="images/2.png" alt="Portfolio 3" onclick="openModal('modal3')">
+    </div>
+    
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Project Title 1</h2>
+            <p>This is a description of the first project.</p>
+        </div>
+    </div>
+    
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Project Title 2</h2>
+            <p>This is a description of the second project.</p>
+        </div>
+    </div>
+    
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Project Title 3</h2>
+            <p>This is a description of the third project.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 My Portfolio | All Rights Reserved
+    </div>
+
+    <script>
+        // Open Modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        // Close Modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
