@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Outfit:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -26,14 +27,17 @@
         .menu-bar {
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%; /* 90% width */
             height: 60px;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
             color: #fff;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 50px;
+            padding: 0 20px;
+            border-radius: 10px; /* Rounded corners */
             z-index: 10;
         }
 
@@ -62,13 +66,6 @@
             height: 600px; /* Adjust height as needed */
             overflow: hidden;
             background-color: #333; /* Fallback color */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 3em;
-            text-align: center;
-            margin-top: 60px; /* To offset the fixed menu bar */
         }
 
         .header video {
@@ -78,7 +75,9 @@
             transform: translate(-50%, -50%);
             width: 100%; /* Full width */
             height: auto; /* Maintains aspect ratio */
-            object-fit: cover; /* Ensures video covers the header without stretching */
+            object-fit: cover; /* Ensures video covers the header */
+            min-height: 100%; /* Ensures it fills the header */
+            min-width: 100%; /* Ensures it fills the header */
         }
 
         /* Portfolio Grid */
@@ -103,6 +102,15 @@
         .portfolio img:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Bigger shadow on hover */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9em;
         }
 
         /* Modal Background */
@@ -139,15 +147,6 @@
             font-size: 1.5em;
             cursor: pointer;
         }
-
-        /* Footer */
-        .footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            font-size: 0.9em;
-        }
     </style>
 </head>
 
@@ -180,24 +179,24 @@
     </div>
     
     <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
+    <div id="modal1" class="modal" onclick="closeModal('modal1')">
+        <div class="modal-content" onclick="event.stopPropagation();">
             <span class="close" onclick="closeModal('modal1')">&times;</span>
             <h2>Project Title 1</h2>
             <p>This is a description of the first project.</p>
         </div>
     </div>
     
-    <div id="modal2" class="modal">
-        <div class="modal-content">
+    <div id="modal2" class="modal" onclick="closeModal('modal2')">
+        <div class="modal-content" onclick="event.stopPropagation();">
             <span class="close" onclick="closeModal('modal2')">&times;</span>
             <h2>Project Title 2</h2>
             <p>This is a description of the second project.</p>
         </div>
     </div>
     
-    <div id="modal3" class="modal">
-        <div class="modal-content">
+    <div id="modal3" class="modal" onclick="closeModal('modal3')">
+        <div class="modal-content" onclick="event.stopPropagation();">
             <span class="close" onclick="closeModal('modal3')">&times;</span>
             <h2>Project Title 3</h2>
             <p>This is a description of the third project.</p>
